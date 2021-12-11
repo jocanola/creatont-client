@@ -1,0 +1,52 @@
+.content {
+  display: flex;
+  background-color: white;
+  border: 1px solid #bbbbbb;
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin-right: 120px;
+  margin-left: 120px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.content__title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  font-size: 35px;
+  line-height: 61.28px;
+}
+.content__tag > span {
+  font-family: "Lobster", cursive;
+  background-color: #ebebeb;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.content__review {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+#rating {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+#timeago {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.content > img {
+  width: 150px;
+  height: 150px;
+}
