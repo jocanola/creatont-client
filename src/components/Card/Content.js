@@ -22,7 +22,14 @@ export const Content = ({ title, tags, ratings, review }) => {
           <span id="rating">3/5</span>
           <span id="timeago"> posted on </span>
           <ReactTimeAgo date={60000} locale="en-US" />
-          <span id="timeago"> | 10 reviews</span>
+          <span
+            id="timeago"
+            className="nav-link"
+            data-bs-toggle="modal"
+            data-bs-target="#Review"
+          >
+            | 10 reviews
+          </span>
         </div>
       </div>
 

@@ -1,13 +1,19 @@
-.navbar{
+.navbar {
   margin-bottom: 10px;
+  background-color: rgb(29, 155, 240) !important;
+  color: white !important;
 }
 .navbar-brand {
   font-family: "Open Sans", sans-serif;
   font-weight: 800;
   font-size: 30px;
   line-height: 40.5px;
+  color: white !important;
 }
 
+#nav-link {
+  color: aliceblue !important;
+}
 a,
 span {
   font-family: "Open Sans", sans-serif;
