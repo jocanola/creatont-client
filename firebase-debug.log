@@ -1,0 +1,70 @@
+[debug] [2021-12-14T21:17:17.810Z] ----------------------------------------------------------------------
+[debug] [2021-12-14T21:17:17.815Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Jokanola\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-12-14T21:17:17.816Z] CLI Version:   9.10.2
+[debug] [2021-12-14T21:17:17.816Z] Platform:      win32
+[debug] [2021-12-14T21:17:17.817Z] Node Version:  v14.16.1
+[debug] [2021-12-14T21:17:17.820Z] Time:          Tue Dec 14 2021 22:17:17 GMT+0100 (West Africa Standard Time)
+[debug] [2021-12-14T21:17:17.820Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-12-14T21:17:17.849Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-12-14T21:17:17.850Z] > authorizing via signed-in user (jokanolayusuffolatunji1@gmail.com)
+[debug] [2021-12-14T21:17:17.850Z] [iam] checking project hosting-my-projects for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-12-14T21:17:17.860Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-12-14T21:17:17.861Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-12-14T21:17:19.062Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Tue, 14 Dec 2021 21:17:17 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-12-14T21:17:19.155Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hosting-my-projects:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-12-14T21:17:21.777Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 14 Dec 2021 21:17:19 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1101","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-12-14T21:17:21.780Z] > refreshing access token with scopes: []
+[debug] [2021-12-14T21:17:21.781Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-12-14T21:17:22.206Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Tue, 14 Dec 2021 21:17:20 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-12-14T21:17:22.857Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/hosting-my-projects [none]
+[debug] [2021-12-14T21:17:23.520Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/hosting-my-projects 200
+[debug] [2021-12-14T21:17:23.521Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/hosting-my-projects {"projectId":"hosting-my-projects","projectNumber":"166082130180","displayName":"hosting-my-projects","name":"projects/hosting-my-projects","resources":{"hostingSite":"hosting-my-projects"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'hosting-my-projects'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-12-14T21:17:23.535Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-12-14T21:17:23.535Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-12-14T21:17:23.917Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Tue, 14 Dec 2021 21:17:22 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-12-14T21:17:24.812Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/hosting-my-projects/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-12-14T21:18:07.232Z] Error: connect ETIMEDOUT 216.58.223.202:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 216.58.223.202:443
+[debug] [2021-12-14T21:18:36.877Z] ----------------------------------------------------------------------
+[debug] [2021-12-14T21:18:36.882Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Jokanola\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-12-14T21:18:36.882Z] CLI Version:   9.10.2
+[debug] [2021-12-14T21:18:36.882Z] Platform:      win32
+[debug] [2021-12-14T21:18:36.883Z] Node Version:  v14.16.1
+[debug] [2021-12-14T21:18:36.885Z] Time:          Tue Dec 14 2021 22:18:36 GMT+0100 (West Africa Standard Time)
+[debug] [2021-12-14T21:18:36.886Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-12-14T21:18:36.907Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-12-14T21:18:36.907Z] > authorizing via signed-in user (jokanolayusuffolatunji1@gmail.com)
+[debug] [2021-12-14T21:18:36.907Z] [iam] checking project hosting-my-projects for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-12-14T21:18:36.913Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hosting-my-projects:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-12-14T21:18:58.149Z] [iam] error while checking permissions, command may fail: FirebaseError: Server Error. connect ETIMEDOUT 216.58.223.202:443
+[debug] [2021-12-14T21:18:58.152Z] > refreshing access token with scopes: []
+[debug] [2021-12-14T21:18:58.153Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-12-14T21:18:58.529Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Tue, 14 Dec 2021 21:18:56 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-12-14T21:18:58.670Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/hosting-my-projects [none]
+[debug] [2021-12-14T21:19:19.726Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects/hosting-my-projects
+[debug] [2021-12-14T21:22:10.548Z] FirebaseError: Failed to make request to https://firebase.googleapis.com/v1beta1/projects/hosting-my-projects
+    at Client.doRequest (C:\Users\Jokanola\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:211:19)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async Client.request (C:\Users\Jokanola\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:96:20)
+    at async Object.getFirebaseProject (C:\Users\Jokanola\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:290:21)
+    at async Object.getDefaultHostingSite (C:\Users\Jokanola\AppData\Roaming\npm\node_modules\firebase-tools\lib\getDefaultHostingSite.js:8:21)
+    at async requireHostingSite (C:\Users\Jokanola\AppData\Roaming\npm\node_modules\firebase-tools\lib\requireHostingSite.js:9:18)
+    at async Object.fn (C:\Users\Jokanola\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\deploy.js:66:9)
+    at async C:\Users\Jokanola\AppData\Roaming\npm\node_modules\firebase-tools\lib\command.js:169:17
+[error] 
+[error] Error: Failed to get Firebase project hosting-my-projects. Please make sure the project exists and your account has permission to access it.

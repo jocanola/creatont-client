@@ -6,6 +6,7 @@
   border-radius: 20px;
   margin-right: 120px;
   margin-left: 120px;
+  justify-content: space-between;
   padding: 20px;
   margin-bottom: 10px;
 }
@@ -14,7 +15,14 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 800;
   font-size: 35px;
-  line-height: 61.28px;
+  line-height: 45.28px;
+}
+
+.content__desc {
+  font-family: "Open Sans", sans-serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 20.28px;
 }
 .content__tag > span {
   font-family: "Lobster", cursive;
@@ -49,4 +57,31 @@
 .content > img {
   width: 150px;
   height: 150px;
+}
+
+@media screen and (max-width: 480px) {
+  .content {
+    margin-right: 20px;
+    margin-left: 20px;
+    align-items: center;
+    flex-direction: column;
+  }
+  .content__title {
+    font-size: 18px;
+    line-height: 24.28px;
+  }
+  .content__tag > span {
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  #timeago {
+    font-size: 10px;
+  }
+
+  #rating {
+    font-size: 14px;
+  }
 }

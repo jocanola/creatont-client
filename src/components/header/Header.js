@@ -6,12 +6,19 @@ import { ReviewForm } from "../Reviews/Review";
 import "./Header.css";
 
 export const Header = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
   return (
     <>
       <Account />
       <PostContent />
-      <ReviewForm />
+      
       <About />
+      
       <nav className="navbar sticky-top navbar-expand-lg navbar-light">
         <div className="container head-spacing">
           <button
@@ -57,14 +64,29 @@ export const Header = () => {
               </li>
             </ul>
             <div className="d-flex">
-              <span
-                className="login-span"
-                data-bs-toggle="modal"
-                data-bs-target="#account"
-              >
-                Login
-              </span>{" "}
-              |<span className="siginup-span">Sign Up</span>
+              {user ? (
+                <span onClick={logout} className="siginup-span">
+                  {"Log out"}
+                </span>
+              ) : (
+                <>
+                  <span
+                    className="login-span siginup-span"
+                    data-bs-toggle="modal"
+                    data-bs-target="#account"
+                  >
+                    Login
+                  </span>
+                  |
+                  <span
+                    className="siginup-span"
+                    data-bs-toggle="modal"
+                    data-bs-target="#account"
+                  >
+                    Sign Up
+                  </span>
+                </>
+              )}
             </div>
           </div>
         </div>

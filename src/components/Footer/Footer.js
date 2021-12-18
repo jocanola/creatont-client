@@ -13,21 +13,21 @@ export const Footer = () => {
                   class="fas fa-map-marker-alt"
                   style={{ marginRight: "10px", color: "blue" }}
                 ></i>
-                No. 34 Stadium Shopping Complex, Oyo, Oyo State
+                Opp. university of Ibadan, Agbowo Area, Ibadan.
               </li>
               <li>
                 <i
                   class="fas fa-phone"
                   style={{ marginRight: "10px", color: "blue" }}
                 ></i>{" "}
-                +2347062314302{" "}
+                +2347066614692{" "}
               </li>
               <li>
                 <i
                   class="fas fa-envelope-open-text"
                   style={{ marginRight: "10px", color: "blue" }}
                 ></i>
-                elitecomputertechnology@gmail.com
+                olumoyesamson@gmail.com
               </li>
             </ul>
           </div>
@@ -38,18 +38,41 @@ export const Footer = () => {
               <div className="form-group">
                 <ul id="contact" style={{ listStyle: "none" }}>
                   <li>
-                    <i
-                      class="fab fa-facebook-f"
-                      style={{ marginRight: "10px", color: "blue" }}
-                    ></i>
-                    Facebook
+                    <a
+                      href="https://twitter.com/SamsonOlumoye"
+                      style={{ color: "white" }}
+                    >
+                      <i
+                        class="fab fa-twitter"
+                        style={{ marginRight: "10px", color: "blue" }}
+                      ></i>
+                      Twitter
+                    </a>
                   </li>
                   <li>
-                    <i
-                      class="fas fa-phone"
-                      style={{ marginRight: "10px", color: "blue" }}
-                    ></i>{" "}
-                    WhatsApp
+                    <a
+                      href="https://twitter.com/SamsonOlumoye"
+                      style={{ color: "white" }}
+                    >
+                      <i
+                        class="fab fa-facebook-f"
+                        style={{ marginRight: "10px", color: "blue" }}
+                      ></i>
+                      Facebook
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://web.whatsapp.com/"
+                      style={{ color: "white" }}
+                    >
+                      <i
+                        class="fas fa-phone"
+                        style={{ marginRight: "10px", color: "blue" }}
+                      ></i>
+                      WhatsApp
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -57,7 +80,6 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      
     </footer>
   );
 };

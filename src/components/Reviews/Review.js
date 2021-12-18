@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import "./Review.css";
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ userRating }) => {
   const [rating, setRating] = useState(0);
+  const [hasRated, setHasRated] = useState(false);
+  const isLoggedIn = JSON.parse(localStorage.getItem("user"));
+  console.log(userRating);
+  useEffect(() => {
+    const hasReviewed = userRating?.includes(isLoggedIn?._id);
+    setHasRated(hasReviewed);
+    // console.log(hasReviewed);
+  }, [userRating]);
+
+  // console.log(isLoggedIn._id);
+  // console.log("user that have rated", userRating);b
+
   const handleRating = (rate) => {
     setRating(rate);
     // other logic
@@ -28,10 +40,12 @@ export const ReviewForm = () => {
             <form class="row g-3 p-3">
               <div class="col-12">
                 <label class="form-label">Rating</label>
-                <Rating
-                  onClick={handleRating}
-                  ratingValue={rating} /* Available Props */
-                />
+                {hasRated && (
+                  <Rating
+                    onClick={handleRating}
+                    ratingValue={rating} /* Available Props */
+                  />
+                )}
               </div>
 
               <div class="col-md-12">
