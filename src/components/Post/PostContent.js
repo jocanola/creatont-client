@@ -24,13 +24,13 @@ export const PostContent = () => {
   data.append("userName", userName);
   data.append("file", file);
 
-  console.log(file);
   const splitTags = (e) => {
     const tagsValue = e.target.value;
     const tagsSplitted = tagsValue.split(",");
     setTags(tagsSplitted);
   };
   const onPostContent = (event) => {
+    setLoading(true);
     event.preventDefault();
     axios
       .post(`http://localhost:5000/api/v1/content/${userId}`, data, {
@@ -45,10 +45,7 @@ export const PostContent = () => {
       .catch((error) => {
         setLoading(false);
         const errorResponse = error?.response?.data?.errors;
-        const errorMessage =
-          errorResponse ||
-          `${errorResponse[0]?.value} is an ${errorResponse[0]?.msg} ${errorResponse[0]?.param}`;
-        setError(errorMessage);
+        setError(errorResponse);
       });
   };
   return (
@@ -126,7 +123,7 @@ export const PostContent = () => {
                     onChange={(e) => setFile(e.target.files[0])}
                   />
                 </div>
-
+                {error && <p style={{ color: "red" }}>{error}</p>}
                 <div class="col-12">
                   <button
                     type="submit"

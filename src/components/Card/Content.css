@@ -11,7 +11,7 @@
   margin-bottom: 10px;
 }
 
-.content__title {
+.content__title > a {
   font-family: "Open Sans", sans-serif;
   font-weight: 800;
   font-size: 35px;

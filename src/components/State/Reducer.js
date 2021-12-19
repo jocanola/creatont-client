@@ -1,5 +1,5 @@
 export const initialState = {
-  basket: [],
+  content: [],
   user: null,
 };
 
@@ -11,10 +11,10 @@ const reducer = (state, action) => {
         user: action.user,
       };
 
-    case "EMPTY_BASKET":
+    case "SET_CONTENT":
       return {
         ...state,
-        basket: [],
+        content: [],
       };
 
     default:

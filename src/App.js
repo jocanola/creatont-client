@@ -4,9 +4,11 @@ import "./App.css";
 import { Content } from "./components/Card/Content";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/header/Header";
+import { SearchBar } from "./components/Search/SearchBar";
 
 function App() {
   const [content, setContent] = useState([]);
+  const [searchField, setSearchField] = useState("");
   const onFetchContent = () => {
     axios.get("http://localhost:5000/api/v1/content").then((response) => {
       console.log(response?.data?.data);
@@ -16,10 +18,25 @@ function App() {
   useEffect(() => {
     onFetchContent();
   }, []);
+
+  const filterdContent = content.filter((item) => {
+    return (
+      item.title.toLowerCase().includes(searchField.toLocaleLowerCase()) ||
+      item.tags
+        .join(",")
+        .toLocaleLowerCase()
+        .includes(searchField.toLocaleLowerCase())
+    );
+  });
+
+  const onSearchChange = (e) => {
+    setSearchField(e.target.value);
+  };
   return (
     <div className="App">
       <Header />
-      {content.map((item, id) => {
+      <SearchBar onSearchChange={onSearchChange} />
+      {filterdContent?.map((item, id) => {
         const {
           _id,
           title,

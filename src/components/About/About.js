@@ -27,14 +27,14 @@ export const About = () => {
               About Us
             </div>
             <span id="about__span">
-              Creatont is a community for users to share their contents for
-              other users to rate and review the content
+              Creatont is a community for users to discover great contents and
+              share contents for other users to rate and review the contents.
             </span>
-            <span>Team</span>
-            <Team name="Samson Olumoye" position="Founder (Product guy)" />
+            {/* <span>Team</span> */}
+            <Team name="Samson Olumoye" position="Co-founder (Product guy)" />
             <Team
               name="Remilekun Sulaimon"
-              position="Co-founder (Business guy"
+              position="Co-founder (Business guy)"
             />
             <Team name="Yusuff Jokanola" position="Developer (Tech Guy)" />
           </div>

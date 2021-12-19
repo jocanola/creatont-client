@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Content.css";
-import contentImg from "../../assets/images/contentimage.jpg";
+
 import ReactTimeAgo from "react-time-ago";
 import axios from "axios";
 import { ReviewForm } from "../Reviews/Review";
@@ -17,7 +17,6 @@ export const Content = ({
   imageId,
 }) => {
   const [rateValue, setRateValue] = useState(5);
-  const [userRatingState, setUserRatingState] = useState(null);
   const onGetRatingValue = () => {
     axios
       .get(`http://localhost:5000/api/v1/content/rating/${id}`)
@@ -29,6 +28,17 @@ export const Content = ({
   useEffect(() => {
     onGetRatingValue();
   }, []);
+
+  //save post to locatStorage
+  const onSaveCurrentPost = () => {
+    const data = {
+      id,
+      userName,
+      review,
+      userRating,
+    };
+    localStorage.setItem("content", JSON.stringify(data));
+  };
   return (
     <>
       <ReviewForm userRating={id} />
@@ -37,16 +47,20 @@ export const Content = ({
           <span id="timeago">
             <i>Posted by {userName}</i>
           </span>
-          <a href={link}>
-            <p className="content__title">{title}</p>
-          </a>
+
+          <p className="content__title">
+            <a href={link} target="_blank">
+              {title}
+            </a>
+          </p>
+
           <p className="content__desc">{desc}</p>
           <div className="content__tag">
             {tags?.map((item, i) => (
               <span>{item}</span>
             ))}
           </div>
-          <div className="content__review">
+          <div className="content__review no-show">
             <i
               class="fas fa-star"
               style={{
@@ -56,7 +70,7 @@ export const Content = ({
               }}
             ></i>
             <span id="rating">
-              {rateValue ? `${rateValue / 5}` : "No rating"}
+              {rateValue ? `${rateValue.toFixed(1)}/5.0` : "No rating"}
             </span>
             <span id="timeago"> posted </span>
             <ReactTimeAgo date={createdAt} locale="en-US" />
@@ -65,9 +79,12 @@ export const Content = ({
               className="nav-link"
               data-bs-toggle="modal"
               data-bs-target="#Review"
-              onClick={() => setUserRatingState(userRating)}
+              onClick={onSaveCurrentPost}
             >
-              | {review.length > 0 ? `${review.length} reviews` : "unreview"}
+              |{" "}
+              {review.length > 0
+                ? `${review.length} reviews`
+                : "Write a review"}
             </span>
           </div>
         </div>
