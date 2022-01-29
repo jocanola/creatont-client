@@ -8,14 +8,14 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
 import ru from "javascript-time-ago/locale/ru.json";
 import { StateProvider } from "./components/State/StateProvider";
-import reducer, { initialState } from "./components/State/Reducer";
+// import reducer, { initialState } from "./components/State/Reducer";
 
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
 
 ReactDOM.render(
   <React.StrictMode>
-    <StateProvider reducer={reducer} initialState={initialState}>
+    <StateProvider>
       <App />
     </StateProvider>
   </React.StrictMode>,

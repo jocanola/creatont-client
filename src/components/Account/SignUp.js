@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { ClosedBtn } from "../sharedComponents/ClosedBtn";
 import { useStateValue } from "../State/StateProvider";
 
 export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
- 
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   // const [despatch] = useStateValue();
@@ -21,9 +22,13 @@ export const SignUp = () => {
     event.preventDefault();
     console.log(data);
     axios
-      .post("http://localhost:5000/api/v1/registration", JSON.stringify(data), {
-        headers: { "Content-Type": "application/json; charset=UTF-8" },
-      })
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/registration`,
+        JSON.stringify(data),
+        {
+          headers: { "Content-Type": "application/json; charset=UTF-8" },
+        }
+      )
       .then((response) => {
         // setModal("modal");
         console.log(response);
@@ -84,13 +89,7 @@ export const SignUp = () => {
         <button onClick={onSignUp} type="submit" className="btn btn-primary">
           {loading ? "Loading..." : "Sign Up"}
         </button>
-        <button
-          type="button"
-          className="btn btn-secondary float-end"
-          data-bs-dismiss="modal"
-        >
-          Close
-        </button>
+        <ClosedBtn />
       </form>
     </div>
   );

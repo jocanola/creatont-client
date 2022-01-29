@@ -6,11 +6,16 @@ import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/header/Header";
 import { SearchBar } from "./components/Search/SearchBar";
 
+import { ContentSkeleton } from "./components/Card/CardSkeleton";
+
 function App() {
   const [content, setContent] = useState([]);
   const [searchField, setSearchField] = useState("");
+  const [topContent, setTopContent] = useState(false);
+
   const onFetchContent = () => {
-    axios.get("http://localhost:5000/api/v1/content").then((response) => {
+    console.log(process.env.REACT_APP_BASE_URL);
+    axios.get(`${process.env.REACT_APP_BASE_URL}/content`).then((response) => {
       console.log(response?.data?.data);
       setContent(response?.data?.data);
     });
@@ -18,6 +23,17 @@ function App() {
   useEffect(() => {
     onFetchContent();
   }, []);
+
+  useEffect(() => {
+    const getTopContent = content.sort(function (a, b) {
+      return b.review.length - a.review.length;
+    });
+    if (topContent) {
+      setContent(getTopContent);
+    }
+  }, [topContent, content]);
+
+  console.log(content);
 
   const filterdContent = content.filter((item) => {
     return (
@@ -34,8 +50,11 @@ function App() {
   };
   return (
     <div className="App">
-      <Header />
-      <SearchBar onSearchChange={onSearchChange} />
+      <Header setTopContent={setTopContent} />
+      <SearchBar
+        onSearchChange={onSearchChange}
+        setTopContent={setTopContent}
+      />
       {filterdContent?.map((item, id) => {
         const {
           _id,
@@ -62,9 +81,16 @@ function App() {
             desc={desc}
             userRating={userRating}
             imageId={imageId}
+            item={item}
           />
         );
       })}
+
+      {content.length < 1
+        ? Array(10)
+            .fill()
+            .map((_, i) => <ContentSkeleton />)
+        : null}
       <Footer />
     </div>
   );

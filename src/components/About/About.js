@@ -1,4 +1,5 @@
 import React from "react";
+import { ClosedBtn } from "../sharedComponents/ClosedBtn";
 import "./About.css";
 
 export const About = () => {
@@ -27,8 +28,9 @@ export const About = () => {
               About Us
             </div>
             <span id="about__span">
-              Creatont is a community for users to discover great contents and
-              share contents for other users to rate and review the contents.
+              Criew is a community for users to discover great contents and a
+              platform for people to share contents for other users to rate and
+              review the contents.
             </span>
             {/* <span>Team</span> */}
             <Team name="Samson Olumoye" position="Co-founder (Product guy)" />
@@ -37,6 +39,7 @@ export const About = () => {
               position="Co-founder (Business guy)"
             />
             <Team name="Yusuff Jokanola" position="Developer (Tech Guy)" />
+            <ClosedBtn />
           </div>
         </div>
       </div>

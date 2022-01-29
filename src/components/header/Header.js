@@ -2,10 +2,10 @@ import React from "react";
 import { About } from "../About/About";
 import { Account } from "../Account/Account";
 import { PostContent } from "../Post/PostContent";
-import { ReviewForm } from "../Reviews/Review";
+// import { ReviewForm } from "../Reviews/Review";
 import "./Header.css";
 
-export const Header = () => {
+export const Header = ({ setTopContent }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
   const logout = () => {
@@ -16,11 +16,12 @@ export const Header = () => {
     <>
       <Account />
       <PostContent />
-      
       <About />
-      
       <nav className="navbar sticky-top navbar-expand-lg navbar-light">
         <div className="container head-spacing">
+          <a className="navbar-brand" href="#">
+            Criew
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -32,9 +33,7 @@ export const Header = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <a className="navbar-brand" href="#">
-            Creatont
-          </a>
+
           <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
               <li className="nav-item">
@@ -47,11 +46,7 @@ export const Header = () => {
                   New Post
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#" id="nav-link">
-                  Reviews
-                </a>
-              </li>
+
               <li className="nav-item">
                 <a
                   className="nav-link"

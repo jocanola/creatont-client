@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
+import { Modal } from "../sharedComponents/Modal";
+import { useStateValue } from "../State/StateProvider";
 import "./Review.css";
 import ReviewList from "./ReviewList";
+// import ReviewList from "./ReviewList";
 
 export const ReviewForm = () => {
   const [rating, setRating] = useState(0);
@@ -11,36 +14,37 @@ export const ReviewForm = () => {
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [error, setError] = useState(null);
+  const { currentContent } = useStateValue();
+
   const isLoggedIn = JSON.parse(localStorage.getItem("user"));
-  const content = JSON.parse(localStorage.getItem("content"));
+  // const content = JSON.parse(localStorage.getItem("content"));
   //Still need to find solution to the get the userId and userName
   const userId = isLoggedIn?._id;
-  const id = content?.id;
-  const review = content?.review;
-  console.log(review);
+  const id = currentContent?._id;
+  const review = currentContent?.review;
+  console.log(id);
 
-  // console.log(isLoggedIn._id);
-  // console.log("user that have rated", id);b
-  //Handling Comments
-  const onSubmitComment = () => {
+  const onSubmitComment = (event) => {
+    event.preventDefault();
     setLoading2(true);
-    const userName = isLoggedIn.userName;
-    const data = { userName, comments };
+    const username = isLoggedIn?.username;
+    const data = { username, comments };
     console.log(JSON.stringify(data));
-    setLoading(true);
+    setLoading2(true);
     axios
       .put(
-        `http://localhost:5000/api/v1/content/comments/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/content/comments/${id}`,
         JSON.stringify(data),
         {
           headers: { "Content-Type": "application/json; charset=UTF-8" },
         }
       )
       .then((response) => {
-        setLoading(false);
+        setLoading2(false);
+        window.location.reload();
       })
       .catch((error) => {
-        setLoading(false);
+        setLoading2(false);
         console.log(error?.response?.data);
         setError(error?.response?.data?.error);
       });
@@ -55,7 +59,7 @@ export const ReviewForm = () => {
     setLoading(true);
     axios
       .put(
-        `http://localhost:5000/api/v1/content/review/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/content/review/${id}`,
         JSON.stringify(data),
         {
           headers: { "Content-Type": "application/json; charset=UTF-8" },
@@ -78,68 +82,54 @@ export const ReviewForm = () => {
   };
 
   return (
-    <div
-      className="modal fade"
-      id="Review"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content">
-          <div className="modal-body">
-            {/* <!-- Nav tabs --> */}
-            <form class="row g-3 p-3">
-              <div class="col-12">
-                <label class="form-label">Rating</label>
-                {!loading ? (
-                  <Rating
-                    onClick={handleRating}
-                    ratingValue={rating} /* Available Props */
-                  />
-                ) : (
-                  <p>Loading...</p>
-                )}
-                {error && <p style={{ color: "red" }}>{error}</p>}
-              </div>
+    <Modal id="Review">
+      <div style={{ overflowY: "scroll", overflowX: "hidden" }}>
+        <ReviewList content={currentContent?.review} />
 
-              <div class="col-md-12">
-                <div class="form-floating">
-                  <textarea
-                    class="form-control"
-                    placeholder="Leave a comment here"
-                    id="floatingTextarea"
-                    onChange={(e) => setComment(e.target.value)}
-                  ></textarea>
-                  <label for="floatingTextarea">Comments</label>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  onClick={onSubmitComment}
-                >
-                  Submit
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-secondary float-end"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-              </div>
-            </form>
-            {review.map((item, i) => {
-              <ReviewList key={i} name={item.username} text={item.message} />;
-            })}
+        <form class="row g-3 p-3">
+          <div class="col-12">
+            <label class="form-label">Rating</label>
+            {!loading ? (
+              <Rating
+                onClick={handleRating}
+                ratingValue={rating} /* Available Props */
+              />
+            ) : (
+              <p>Loading...</p>
+            )}
+            {error && <p style={{ color: "red" }}>{error}</p>}
           </div>
-        </div>
+
+          <div class="col-md-12">
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                placeholder="Share your opinion"
+                id="floatingTextarea"
+                onChange={(e) => setComment(e.target.value)}
+              ></textarea>
+              <label for="floatingTextarea">Share your opinion</label>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              onClick={onSubmitComment}
+            >
+              {loading2 ? "Loading..." : "Submit"}
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary float-end"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </form>
       </div>
-    </div>
+    </Modal>
   );
 };

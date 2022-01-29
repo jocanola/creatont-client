@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { ClosedBtn } from "../sharedComponents/ClosedBtn";
 import "./PostContent.css";
 
 export const PostContent = () => {
@@ -33,7 +34,7 @@ export const PostContent = () => {
     setLoading(true);
     event.preventDefault();
     axios
-      .post(`http://localhost:5000/api/v1/content/${userId}`, data, {
+      .post(`${process.env.REACT_APP_BASE_URL}/content/${userId}`, data, {
         headers: { "Content-Type": "application/json; charset=UTF-8" },
       })
       .then((response, error) => {
@@ -72,7 +73,7 @@ export const PostContent = () => {
                     type="text"
                     class="form-control"
                     id="inputAddress"
-                    placeholder="Why creatont is the best for content creator"
+                    placeholder="Why criew is the best for content creator"
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
@@ -84,7 +85,7 @@ export const PostContent = () => {
                     type="text"
                     class="form-control"
                     id="inputAddress2"
-                    placeholder="www.xyz.com"
+                    placeholder="https://jocanola.github.io"
                     onChange={(e) => setLink(e.target.value)}
                   />
                 </div>
@@ -132,9 +133,7 @@ export const PostContent = () => {
                   >
                     {loading ? "Loading..." : "Submit"}
                   </button>
-                  <button type="button" className="btn btn-secondary float-end">
-                    Close
-                  </button>
+                  <ClosedBtn />
                 </div>
               </form>
             )}
@@ -157,6 +156,7 @@ export const PostContent = () => {
                 >
                   Sign Up
                 </span>
+                <ClosedBtn />
               </>
             )}
           </div>

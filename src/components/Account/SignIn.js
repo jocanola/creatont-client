@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { ClosedBtn } from "../sharedComponents/ClosedBtn";
 
 export const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ export const SignIn = () => {
 
     axios
       .post(
-        "http://localhost:5000/api/v1/registration/login",
+        `${process.env.REACT_APP_BASE_URL}/registration/login`,
         JSON.stringify(data),
         {
           headers: { "Content-Type": "application/json; charset=UTF-8" },
@@ -58,13 +59,7 @@ export const SignIn = () => {
         <button onClick={onSignIn} type="submit" className="btn btn-primary">
           {loading ? "Loading..." : "Sign In"}
         </button>
-        <button
-          type="button"
-          className="btn btn-secondary float-end"
-          data-bs-dismiss="modal"
-        >
-          Close
-        </button>
+        <ClosedBtn />
       </form>
     </div>
   );
