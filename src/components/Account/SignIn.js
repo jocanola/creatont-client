@@ -48,7 +48,7 @@ export const SignIn = () => {
         </div>
         <div class="mb-3">
           <input
-            type="email"
+            type="password"
             class="form-control"
             id="floatingInput"
             placeholder="password"
