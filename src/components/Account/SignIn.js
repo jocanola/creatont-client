@@ -12,6 +12,7 @@ export const SignIn = () => {
     password,
   };
   const onSignIn = (event) => {
+    event.preventDefault();
     setLoading(true);
 
     axios
@@ -24,7 +25,6 @@ export const SignIn = () => {
       )
       .then((response) => {
         console.log(response);
-
         setLoading(false);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         window.location.reload();
